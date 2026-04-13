@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <section>
+        <h2>Buscador de Eventos</h2>
+        
+        <form action="{% url 'buscar_evento' %}" method="GET">
+            <input type="text" name="q" placeholder="Escribe el nombre del evento..." value="{{ query|default:'' }}">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <hr>
+
+        {% if resultados %}
+            <h3>Resultados encontrados para "{{ query }}":</h3>
+            <ul>
+                {% for evento in resultados %}
+                    <li>
+                        <strong>{{ evento.nombre }}</strong> - Fecha: {{ evento.fecha }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elif query %}
+            <p style="color: red;">No se encontraron eventos que coincidan con "{{ query }}".</p>
+        {% else %}
+            <p>Ingresa un nombre arriba para comenzar la búsqueda.</p>
+        {% endif %}
+    </section>
+{% endblock %}

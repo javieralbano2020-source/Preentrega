@@ -1,13 +1,18 @@
 from django.shortcuts import render
-
-from django.shortcuts import render
 from .models import Evento
 
+# Para la página principal
+def home(request):
+    return render(request, 'home.html') 
+
+# Para el buscador
 def buscar_evento(request):
-    if request.GET.get('nombre'):
-        nombre_buscado = request.GET.get('nombre')
-        # Buscamos eventos que contengan ese nombre
-        resultados = Evento.objects.filter(nombre__icontains=nombre_buscado)
-        return render(request, 'eventos/resultados.html', {'eventos': resultados})
-    
-    return render(request, 'eventos/buscar.html')
+    query = request.GET.get('q')
+    if query:
+        resultados = Evento.objects.filter(nombre__icontains=query)
+    else:
+        resultados = []
+        return render(request, 'buscar.html', {'resultados': resultados, 'query': query})
+
+def form_persona(request):
+    return render(request, 'form_persona.html')
