@@ -1,0 +1,1 @@
+Simple y suficiente para un proyecto académico. Cuando alguien clone el repo puede hacer pip install -r requirements.txt y listo.

@@ -19,8 +19,8 @@ class Persona(models.Model):
 class Evento(models.Model):
     nombre = models.CharField(max_length=45)
     fecha = models.DateField()
-    # Esta es la clave foránea que conecta con Ubicacion
     ubicacion = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
+    asistentes = models.ManyToManyField(Persona, blank=True)
 
     def __str__(self):
         return self.nombre
