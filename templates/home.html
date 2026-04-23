@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 {% block contenido %}
-  <h1>Bienvenido a la Gestión de Eventos</h1>
-  <p>Usa el menú para buscar o registrar.</p>
+
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
+    <h1 class="display-5 fw-bold"> Bienvenido 👋 </h1>
+    <p class="col-md-8 fs-4">Sistema de gestión de eventos, personas y ubicaciones.</p>
+    <hr>
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <a href="{% url 'form_persona' %}" class="btn btn-primary w-100 mb-2">👤 Registrar Persona</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'form_ubicacion' %}" class="btn btn-success w-100 mb-2">📍 Registrar Ubicación</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'form_evento' %}" class="btn btn-warning w-100 mb-2">🗓️ Crear Evento</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'buscar_evento' %}" class="btn btn-info w-100 mb-2">🔍 Buscar Evento</a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

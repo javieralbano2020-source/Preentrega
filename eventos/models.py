@@ -8,6 +8,10 @@ class Ubicacion(models.Model):
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name = 'Ubicación'
+        verbose_name_plural = 'Ubicaciones'
+
 class Persona(models.Model):
     nombre = models.CharField(max_length=45)
     apellido = models.CharField(max_length=45)
@@ -15,6 +19,10 @@ class Persona(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
+    class Meta:
+        verbose_name = 'Persona'
+        verbose_name_plural = 'Personas'
 
 class Evento(models.Model):
     nombre = models.CharField(max_length=45)
@@ -24,3 +32,7 @@ class Evento(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name = 'Evento'
+        verbose_name_plural = 'Eventos'

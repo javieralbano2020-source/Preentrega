@@ -1,29 +1,36 @@
 {% extends "base.html" %}
-
 {% block contenido %}
-    <section>
-        <h2>Buscador de Eventos</h2>
-        
+
+<div class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">🔍 Buscador de Eventos</h4>
+    </div>
+    <div class="card-body">
         <form action="{% url 'buscar_evento' %}" method="GET">
-            <input type="text" name="q" placeholder="Escribe el nombre del evento..." value="{{ query|default:'' }}">
-            <button type="submit">Buscar</button>
+            <div class="input-group mb-3">
+                <input type="text" name="q" class="form-control" placeholder="Escribe el nombre del evento..." value="{{ query|default:'' }}">
+                <button class="btn btn-info text-white" type="submit">Buscar</button>
+            </div>
         </form>
 
         <hr>
 
         {% if resultados %}
-            <h3>Resultados encontrados para "{{ query }}":</h3>
-            <ul>
+            <h5>Resultados para "<strong>{{ query }}</strong>":</h5>
+            <ul class="list-group mt-3">
                 {% for evento in resultados %}
-                    <li>
-                        <strong>{{ evento.nombre }}</strong> - Fecha: {{ evento.fecha }}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ evento.nombre }}</span>
+                        <span class="badge bg-secondary">{{ evento.fecha }}</span>
                     </li>
                 {% endfor %}
             </ul>
         {% elif query %}
-            <p style="color: red;">No se encontraron eventos que coincidan con "{{ query }}".</p>
+            <div class="alert alert-warning mt-3">No se encontraron eventos para "{{ query }}".</div>
         {% else %}
-            <p>Ingresa un nombre arriba para comenzar la búsqueda.</p>
+            <p class="text-muted">Ingresá un nombre arriba para comenzar la búsqueda.</p>
         {% endif %}
-    </section>
+    </div>
+</div>
+
 {% endblock %}
