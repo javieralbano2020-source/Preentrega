@@ -10,9 +10,9 @@ local_settings.py
 
 # Entornos virtuales
 env/
-venv/
 .env/
-
+.venv/
+venv/
 # Editores
 .vscode/
 .idea/

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block contenido %}
-
 <div class="card shadow-sm">
     <div class="card-header bg-info text-white">
         <h4 class="mb-0">🔍 Buscador de Eventos</h4>
@@ -12,17 +11,29 @@
                 <button class="btn btn-info text-white" type="submit">Buscar</button>
             </div>
         </form>
-
         <hr>
-
         {% if resultados %}
             <h5>Resultados para "<strong>{{ query }}</strong>":</h5>
             <ul class="list-group mt-3">
                 {% for evento in resultados %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>{{ evento.nombre }}</span>
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <strong>{{ evento.nombre }}</strong>
                         <span class="badge bg-secondary">{{ evento.fecha }}</span>
-                    </li>
+                    </div>
+                    <small class="text-muted">📍 {{ evento.ubicacion.nombre }} — {{ evento.ubicacion.direccion }}</small>
+                    <div class="mt-1">
+                        <small><strong>Asistentes:</strong>
+                        {% if evento.asistentes.all %}
+                            {% for persona in evento.asistentes.all %}
+                                <span class="badge bg-primary">{{ persona.nombre }} {{ persona.apellido }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted">Sin asistentes registrados</span>
+                        {% endif %}
+                        </small>
+                    </div>
+                </li>
                 {% endfor %}
             </ul>
         {% elif query %}
@@ -32,5 +43,4 @@
         {% endif %}
     </div>
 </div>
-
 {% endblock %}

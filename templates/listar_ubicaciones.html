@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">📍 Ubicaciones registradas</h4>
+        <a href="{% url 'form_ubicacion' %}" class="btn btn-light btn-sm">+ Nueva ubicación</a>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Capacidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ubicacion in ubicaciones %}
+                <tr>
+                    <td>{{ ubicacion.nombre }}</td>
+                    <td>{{ ubicacion.direccion }}</td>
+                    <td>{{ ubicacion.capacidad }}</td>
+                    <td>
+                        <a href="{% url 'editar_ubicacion' ubicacion.id %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_ubicacion' ubicacion.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" class="text-muted">No hay ubicaciones registradas.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
