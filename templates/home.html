@@ -1,24 +1,56 @@
 {% extends "base.html" %}
 {% block contenido %}
 
-<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
-    <h1 class="display-5 fw-bold"> Bienvenido 👋 </h1>
-    <p class="col-md-8 fs-4">Sistema de gestión de eventos, personas y ubicaciones.</p>
-    <hr>
-    <div class="row mt-4">
-        <div class="col-md-3">
-            <a href="{% url 'form_persona' %}" class="btn btn-primary w-100 mb-2">👤 Registrar Persona</a>
+<div class="text-center py-5">
+    <h1 class="display-4 fw-bold text-white mb-2">📅 Sistema de Gestión de Eventos</h1>
+    <p class="text-secondary fs-5 mb-5">Registrá personas, ubicaciones y eventos desde un solo lugar.</p>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="card h-100 text-center p-3" style="background-color: #1a4a5c; border: none;">
+            <div class="card-body">
+                <div class="fs-1 mb-3">👤</div>
+                <h5 class="text-white">Personas</h5>
+                <p class="text-secondary small">Registrá y gestioná las personas del sistema.</p>
+                <a href="{% url 'form_persona' %}" class="btn btn-sm w-100 mt-2 text-white fw-bold" style="background-color: #1a6a8c;">  Registrar</a>
+                <a href="{% url 'listar_personas' %}" class="btn btn-sm w-100 mt-2 text-white" style="background-color: #123a4a;">Ver listado</a>
+            </div>
         </div>
-        <div class="col-md-3">
-            <a href="{% url 'form_ubicacion' %}" class="btn btn-success w-100 mb-2">📍 Registrar Ubicación</a>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 text-center p-3" style="background-color: #1a4a3a; border: none;">
+            <div class="card-body">
+                <div class="fs-1 mb-3">📍</div>
+                <h5 class="text-white">Ubicaciones</h5>
+                <p class="text-secondary small">Administrá los lugares donde se realizan eventos.</p>
+                <a href="{% url 'form_ubicacion' %}" class="btn btn-sm w-100 mt-2 text-white fw-bold" style="background-color: #1a6a4a;"> Registrar</a>
+                <a href="{% url 'listar_ubicaciones' %}" class="btn btn-sm w-100 mt-2 text-white" style="background-color: #0a2a1a;">Ver listado</a>
+            </div>
         </div>
-        <div class="col-md-3">
-            <a href="{% url 'form_evento' %}" class="btn btn-warning w-100 mb-2">🗓️ Crear Evento</a>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 text-center p-3" style="background-color: #3a2a5c; border: none;">
+            <div class="card-body">
+                <div class="fs-1 mb-3">🗓️</div>
+                <h5 class="text-white">Eventos</h5>
+                <p class="text-secondary small">Creá y organizá eventos con sus asistentes.</p>
+                <a href="{% url 'form_evento' %}" class="btn btn-sm w-100 mt-2 text-white fw-bold" style="background-color: #5a3a8c;"> Crear</a>
+                <a href="{% url 'listar_eventos' %}" class="btn btn-sm w-100 mt-2 text-white" style="background-color: #2a1a4a;">Ver listado</a>
+            </div>
         </div>
-        <div class="col-md-3">
-            <a href="{% url 'buscar_evento' %}" class="btn btn-info w-100 mb-2">🔍 Buscar Evento</a>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 text-center p-3" style="background-color: #2a3a5c; border: none;">
+            <div class="card-body">
+                <div class="fs-1 mb-3">🔍</div>
+                <h5 class="text-white">Buscador</h5>
+                <p class="text-secondary small">Buscá eventos por nombre en tiempo real.</p>
+                <a href="{% url 'buscar_evento' %}" class="btn btn-sm w-100 mt-2 text-white fw-bold" style="background-color: #3a5a8c;">Buscar evento</a>
+            </div>
         </div>
     </div>
 </div>
 
 {% endblock %}
+
